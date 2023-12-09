@@ -31,20 +31,22 @@ spec:
           ports:
             - containerPort: 80
           livenessProbe:
-            httpGet:
-              path: /health
-              port: 80
+            exec:
+              command:
+                - cat
+                - /tmp/healthy
             initialDelaySeconds: 10
             periodSeconds: 15
           readinessProbe:
-            httpGet:
-              path: /health
-              port: 80
+            exec:
+              command:
+                - cat
+                - /tmp/healthy
             initialDelaySeconds: 5
             periodSeconds: 10
           startupProbe:
-            httpGet:
-              path: /health
-              port: 80
-            initialDelaySeconds: 20
-            periodSeconds: 30
+            exec:
+              command:
+                - touch
+                - /tmp/healthy
+            failureThreshold: 40

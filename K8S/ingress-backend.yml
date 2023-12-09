@@ -4,7 +4,7 @@ metadata:
   name: app-api-ingress
   namespace: exam
   annotations:
-    kubernetes.io/ingress.class: "nginx"
+    spec.ingressClassName: "nginx"
     nginx.ingress.kubernetes.io/add-base-url: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:

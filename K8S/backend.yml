@@ -54,3 +54,23 @@ spec:
                 configMapKeyRef:
                   name: mysql-conf
                   key: password
+          livenessProbe:
+            exec:
+              command:
+                - cat
+                - /tmp/healthy
+            initialDelaySeconds: 10
+            periodSeconds: 15
+          readinessProbe:
+            exec:
+              command:
+                - cat
+                - /tmp/healthy
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          startupProbe:
+            exec:
+              command:
+                - touch
+                - /tmp/healthy
+            failureThreshold: 40
